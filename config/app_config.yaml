@@ -1,0 +1,59 @@
+# ============================================================
+# Enterprise Prompt — Application Configuration
+# ============================================================
+
+app:
+  name: "Enterprise Prompt"
+  version: "1.0.0"
+  description: "AI-Powered Prompt Enhancement Platform"
+
+# AI Provider Settings
+providers:
+  default: "gemini"
+  
+  gemini:
+    model: "gemini-2.5-flash"
+    temperature: 0.3
+    max_tokens: 8192
+    request_timeout: 60
+  
+  openai:
+    model: "gpt-4o-mini"
+    temperature: 0.3
+    max_tokens: 4096
+    request_timeout: 60
+
+# Enhancement Pipeline Defaults
+pipeline:
+  refinement_rounds: 2
+  quality_threshold: 80          # Score 0-100 to accept without further refinement
+  enable_evaluation: true
+  enable_refinement: true
+  enable_chaining: true
+  max_chain_depth: 3
+
+# Rate Limiting
+rate_limiting:
+  enabled: true
+  requests_per_minute: 15
+  burst_size: 5
+  backoff_base: 2
+
+# Storage
+storage:
+  database_path: "data/enterprise_prompt.db"
+  max_history_items: 1000
+
+# Security
+security:
+  max_prompt_length: 50000
+  sanitize_inputs: true
+  log_prompts: false             # Set true for debugging only
+
+# Server
+server:
+  host: "0.0.0.0"
+  port: 8000
+  log_level: "INFO"
+  cors_origins:
+    - "*"

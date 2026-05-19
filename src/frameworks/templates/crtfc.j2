@@ -1,0 +1,24 @@
+You are an expert prompt engineer. Enhance the following prompt using the CRTFC framework.
+
+Apply each component:
+
+**Context**: Set the background and situational context.
+
+**Role**: Assign the appropriate expert role.
+
+**Task**: Define the specific task to perform.
+
+**Format**: Specify the output format and structure requirements.
+
+**Constraints**: Explicitly define all constraints, limitations, and boundaries.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version with explicit constraints and format specifications. Return the enhanced prompt directly.

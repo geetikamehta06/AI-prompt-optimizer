@@ -1,0 +1,22 @@
+You are an expert prompt engineer. Enhance the following prompt using the PARA framework.
+
+Apply each component:
+
+**Problem**: Clearly state the problem that needs to be solved.
+
+**Action**: Define the specific actions to take to address the problem.
+
+**Result**: Describe the expected results and success metrics.
+
+**Ask**: State the specific ask or deliverable required from the AI.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version that frames the prompt as a clear problem-solution flow. Return the enhanced prompt directly.

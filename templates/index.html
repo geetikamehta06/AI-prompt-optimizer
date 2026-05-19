@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enterprise Prompt — AI-Powered Prompt Enhancement Platform. Intelligently optimize, restructure, and refine your prompts using 20+ prompt engineering frameworks.">
+    <title>Enterprise Prompt — AI Prompt Enhancement Platform</title>
+    <link rel="stylesheet" href="/static/css/design-system.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+<body>
+    <div class="app-layout">
+
+        <!-- ── Sidebar ─────────────────────────────────── -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">EP</div>
+                <div>
+                    <div class="logo-text">Enterprise Prompt</div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Main</div>
+                <div class="nav-item active" data-page="dashboard" id="nav-dashboard">
+                    <span class="nav-icon">📊</span> Dashboard
+                </div>
+                <div class="nav-item" data-page="enhance" id="nav-enhance">
+                    <span class="nav-icon">✨</span> Enhance Prompt
+                </div>
+                <div class="nav-item" data-page="playground" id="nav-playground">
+                    <span class="nav-icon">🧪</span> Playground
+                </div>
+
+                <div class="sidebar-section-title">Library</div>
+                <div class="nav-item" data-page="frameworks" id="nav-frameworks">
+                    <span class="nav-icon">🧩</span> Frameworks
+                </div>
+                <div class="nav-item" data-page="history" id="nav-history">
+                    <span class="nav-icon">📜</span> History
+                </div>
+
+                <div class="sidebar-section-title">System</div>
+                <div class="nav-item" data-page="settings" id="nav-settings">
+                    <span class="nav-icon">⚙️</span> Settings
+                </div>
+            </nav>
+        </aside>
+
+        <!-- ── Header ──────────────────────────────────── -->
+        <header class="header" id="header">
+            <h2 class="header-title" id="header-title">Dashboard</h2>
+            <div class="header-actions">
+                <span class="badge badge-success" id="provider-badge">Gemini</span>
+            </div>
+        </header>
+
+        <!-- ── Main Content ────────────────────────────── -->
+        <main class="main-content" id="main-content">
+
+            <!-- Dashboard Page -->
+            <section class="page active" id="page-dashboard">
+                <div class="dashboard-hero">
+                    <h1>Prompt Enhancement Platform</h1>
+                    <p>Intelligently optimize, restructure, and refine your prompts using 20+ prompt engineering frameworks powered by AI.</p>
+                    <div class="quick-enhance-bar">
+                        <input type="text" id="quick-enhance-input" placeholder="Paste a prompt to enhance quickly...">
+                        <button class="btn btn-primary btn-lg" id="quick-enhance-btn">✨ Enhance</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-4 mb-8" id="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-value" id="stat-total">0</div>
+                        <div class="stat-label">Prompts Enhanced</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-value" id="stat-improvement">+0</div>
+                        <div class="stat-label">Avg. Quality Improvement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-value" id="stat-top-fw">—</div>
+                        <div class="stat-label">Top Framework</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="stat-today">0</div>
+                        <div class="stat-label">Prompts Today</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-header"><h3 class="card-title">Recent Activity</h3></div>
+                        <div id="recent-activity"><div class="empty-state"><div class="empty-state-icon">📝</div><div class="empty-state-title">No activity yet</div><div class="empty-state-desc">Start enhancing prompts to see your activity here.</div></div></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h3 class="card-title">Framework Usage</h3></div>
+                        <div id="framework-usage"><div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-title">No data yet</div><div class="empty-state-desc">Framework usage stats will appear after your first enhancement.</div></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhance Page -->
+            <section class="page" id="page-enhance">
+                <div class="editor-controls" id="enhance-controls">
+                    <label>Provider:</label>
+                    <select id="provider-select">
+                        <option value="">Auto (Default)</option>
+                        <option value="gemini">Gemini</option>
+                        <option value="openai">OpenAI</option>
+                    </select>
+                    <label>Framework:</label>
+                    <select id="framework-select">
+                        <option value="">Auto-Select (AI Recommended)</option>
+                    </select>
+                    <label>
+                        <input type="checkbox" id="eval-toggle" checked> Evaluate
+                    </label>
+                    <label>
+                        <input type="checkbox" id="refine-toggle" checked> Refine
+                    </label>
+                    <button class="btn btn-primary" id="enhance-btn">✨ Enhance Prompt</button>
+                </div>
+
+                <div class="editor-layout">
+                    <div class="editor-panel">
+                        <div class="editor-panel-header">
+                            <span class="editor-panel-title">📝 Original Prompt</span>
+                            <span class="char-count" id="input-char-count">0 chars · 0 words</span>
+                        </div>
+                        <textarea class="prompt-input" id="prompt-input" placeholder="Enter your raw prompt here...&#10;&#10;For example:&#10;Write me a blog post about AI"></textarea>
+                    </div>
+                    <div class="editor-panel">
+                        <div class="editor-panel-header">
+                            <span class="editor-panel-title">✨ Enhanced Prompt</span>
+                            <div class="flex gap-2">
+                                <button class="btn btn-ghost btn-sm" id="copy-btn" title="Copy to clipboard" style="display:none;">📋 Copy</button>
+                            </div>
+                        </div>
+                        <div class="output-display empty" id="prompt-output">Enhanced prompt will appear here...</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-progress" id="pipeline-progress" style="display:none;">
+                    <div class="pipeline-stages" id="pipeline-stages">
+                        <div class="pipeline-stage" data-stage="sanitize"></div>
+                        <div class="pipeline-stage" data-stage="analyze"></div>
+                        <div class="pipeline-stage" data-stage="select"></div>
+                        <div class="pipeline-stage" data-stage="enhance"></div>
+                        <div class="pipeline-stage" data-stage="evaluate"></div>
+                        <div class="pipeline-stage" data-stage="refine"></div>
+                        <div class="pipeline-stage" data-stage="complete"></div>
+                    </div>
+                    <div class="pipeline-log" id="pipeline-log">Ready...</div>
+                </div>
+
+                <div class="quality-comparison" id="quality-comparison" style="display:none;">
+                    <div class="quality-item">
+                        <div class="label">Before</div>
+                        <div class="score before" id="score-before">—</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="quality-item">
+                        <div class="label">After</div>
+                        <div class="score after" id="score-after">—</div>
+                    </div>
+                </div>
+
+                <div class="card mt-6" id="enhancement-details" style="display:none;">
+                    <div class="card-header"><h3 class="card-title">Enhancement Details</h3></div>
+                    <div id="enhancement-info"></div>
+                </div>
+            </section>
+
+            <!-- Playground Page -->
+            <section class="page" id="page-playground">
+                <div class="card mb-6">
+                    <h3 class="card-title mb-4">Prompt Playground</h3>
+                    <p class="text-secondary text-sm mb-4">Test the same prompt with different frameworks and compare results side by side.</p>
+                    <textarea class="prompt-input" id="playground-input" placeholder="Enter a prompt to test with multiple frameworks..." style="min-height:120px;"></textarea>
+                </div>
+                <div class="grid grid-2 mb-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Panel A</h4>
+                            <select id="playground-fw-a" class="input" style="width:auto;min-width:140px;"><option value="">Auto</option></select>
+                        </div>
+                        <div class="output-display empty" id="playground-output-a" style="min-height:200px;">Result A...</div>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="badge badge-primary" id="playground-score-a">—</span>
+                            <button class="btn btn-sm btn-secondary" id="playground-run-a">Run A</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Panel B</h4>
+                            <select id="playground-fw-b" class="input" style="width:auto;min-width:140px;"><option value="">Auto</option></select>
+                        </div>
+                        <div class="output-display empty" id="playground-output-b" style="min-height:200px;">Result B...</div>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="badge badge-primary" id="playground-score-b">—</span>
+                            <button class="btn btn-sm btn-secondary" id="playground-run-b">Run B</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Frameworks Page -->
+            <section class="page" id="page-frameworks">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2>Framework Explorer</h2>
+                        <p class="text-secondary text-sm mt-4" id="fw-count">Loading frameworks...</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <select id="fw-category-filter" class="input" style="width:auto;min-width:160px;">
+                            <option value="">All Categories</option>
+                            <option value="structuring">Structuring</option>
+                            <option value="goal_oriented">Goal-Oriented</option>
+                            <option value="problem_solving">Problem-Solving</option>
+                            <option value="reasoning">Reasoning</option>
+                            <option value="constraint">Constraint</option>
+                            <option value="persona">Persona</option>
+                            <option value="iterative">Iterative</option>
+                        </select>
+                        <input type="text" class="input" id="fw-search" placeholder="Search frameworks..." style="width:auto;min-width:200px;">
+                    </div>
+                </div>
+                <div class="grid grid-auto" id="frameworks-grid"></div>
+            </section>
+
+            <!-- History Page -->
+            <section class="page" id="page-history">
+                <div class="flex justify-between items-center mb-6">
+                    <h2>Prompt History</h2>
+                    <button class="btn btn-secondary btn-sm" id="refresh-history">🔄 Refresh</button>
+                </div>
+                <div class="card">
+                    <table class="history-table" id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Original Prompt</th>
+                                <th>Frameworks</th>
+                                <th>Quality</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body"></tbody>
+                    </table>
+                    <div class="empty-state" id="history-empty">
+                        <div class="empty-state-icon">📜</div>
+                        <div class="empty-state-title">No history yet</div>
+                        <div class="empty-state-desc">Your enhanced prompts will appear here.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Page -->
+            <section class="page" id="page-settings">
+                <h2 class="mb-6">Settings</h2>
+                <div class="settings-section card">
+                    <h3>AI Provider</h3>
+                    <div class="settings-row">
+                        <div class="setting-info">
+                            <div class="setting-label">Default Provider</div>
+                            <div class="setting-desc">Select the default AI provider for prompt enhancement</div>
+                        </div>
+                        <div class="setting-control">
+                            <select id="setting-provider" class="input"><option value="gemini">Gemini</option><option value="openai">OpenAI</option></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section card mt-6">
+                    <h3>Pipeline</h3>
+                    <div class="settings-row">
+                        <div class="setting-info">
+                            <div class="setting-label">Enable Quality Evaluation</div>
+                            <div class="setting-desc">Score prompts before and after enhancement</div>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle active" id="setting-eval" data-setting="enable_evaluation"></div>
+                        </div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="setting-info">
+                            <div class="setting-label">Enable Iterative Refinement</div>
+                            <div class="setting-desc">Automatically refine prompts that don't meet quality threshold</div>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle active" id="setting-refine" data-setting="enable_refinement"></div>
+                        </div>
+                    </div>
+                    <div class="settings-row">
+                        <div class="setting-info">
+                            <div class="setting-label">Quality Threshold</div>
+                            <div class="setting-desc">Minimum quality score to accept without refinement (0-100)</div>
+                        </div>
+                        <div class="setting-control">
+                            <input type="number" class="input" id="setting-threshold" value="80" min="0" max="100" style="width:100px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-section card mt-6">
+                    <h3>About</h3>
+                    <p class="text-secondary text-sm">Enterprise Prompt v1.0.0 — AI-Powered Prompt Enhancement Platform</p>
+                    <p class="text-secondary text-sm mt-4">Supports 20 prompt engineering frameworks with intelligent selection and multi-framework chaining.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

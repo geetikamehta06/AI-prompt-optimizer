@@ -1,0 +1,24 @@
+You are an expert prompt engineer. Enhance the following prompt using the COAST framework.
+
+Apply each component:
+
+**Context**: Set the situational backdrop and operating environment.
+
+**Objective**: Define the primary goal or objective to achieve.
+
+**Actions**: Specify the concrete actions to perform step by step.
+
+**Scenario**: Describe the scenario or use case this applies to.
+
+**Task**: Define the concrete deliverable or output required.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version grounded in a realistic scenario. Return the enhanced prompt directly.

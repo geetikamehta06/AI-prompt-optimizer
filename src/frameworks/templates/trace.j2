@@ -1,0 +1,24 @@
+You are an expert prompt engineer. Enhance the following prompt using the TRACE framework.
+
+Apply each component:
+
+**Task**: State the overall task clearly.
+
+**Request**: Specify the exact request or ask.
+
+**Action**: Define the actions to perform.
+
+**Context**: Provide relevant background context.
+
+**Example**: Include a concrete example of the expected output to guide the AI.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version with a concrete example embedded. Return the enhanced prompt directly.

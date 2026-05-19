@@ -1,0 +1,26 @@
+You are an expert prompt engineer. Enhance the following prompt using the CRAFT framework.
+
+Apply each component of CRAFT systematically:
+
+**Context**: Provide the broader background, situation, or environment relevant to this task. Consider what information the AI needs to understand the full picture.
+
+**Role**: Define the specific expert role, persona, or professional identity the AI should adopt to best fulfill this request.
+
+**Action**: Specify the precise action, task, or deliverable required. Be explicit about what needs to be done.
+
+**Format**: Describe the desired output format — structure, length, style, sections, or template to follow.
+
+**Target**: Identify the intended audience, end-user, or recipient of the output. Tailor language and depth accordingly.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context provided: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version of the prompt that incorporates all five CRAFT components. The enhanced prompt should be clear, specific, and optimized for LLM processing.
+
+Return the enhanced prompt directly — do not explain the framework, just apply it.

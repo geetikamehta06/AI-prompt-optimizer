@@ -1,0 +1,22 @@
+You are an expert prompt engineer. Enhance the following prompt using the Chain of Thought (COT) framework.
+
+Structure the prompt to encourage step-by-step reasoning:
+
+**Problem Statement**: State the problem clearly and completely.
+
+**Thinking Steps**: Break down the reasoning into explicit sequential steps the AI should follow.
+
+**Intermediate Conclusions**: Ask the AI to state conclusions at each step before moving to the next.
+
+**Final Answer**: Request a synthesized final answer that combines all reasoning.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version that guides the AI through structured, step-by-step reasoning. Include explicit instructions like "Think step by step", "First, consider...", "Then, analyze...". Return the enhanced prompt directly.

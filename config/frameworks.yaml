@@ -1,0 +1,601 @@
+# ============================================================
+# Enterprise Prompt — Framework Registry
+# ============================================================
+# All 20 prompt engineering frameworks.
+# To add a new framework: add a block here + create a matching .j2 template.
+# To disable a framework: set enabled: false.
+
+frameworks:
+
+  # ─── STRUCTURING FRAMEWORKS ───────────────────────────────
+
+  - id: craft
+    name: "CRAFT"
+    acronym: "Context · Role · Action · Format · Target"
+    description: "Structured framework for creating comprehensive, well-defined prompts with clear context, role assignment, specific actions, output format, and target audience."
+    category: structuring
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Context
+        description: "Background information and situational context"
+        prompt_hint: "What is the broader context or background for this task?"
+      - name: Role
+        description: "The role or persona the AI should adopt"
+        prompt_hint: "What expert role should the AI take on?"
+      - name: Action
+        description: "The specific action or task to perform"
+        prompt_hint: "What exactly should be done?"
+      - name: Format
+        description: "The desired output format and structure"
+        prompt_hint: "How should the output be formatted?"
+      - name: Target
+        description: "The intended audience or target"
+        prompt_hint: "Who is the output intended for?"
+    best_for:
+      - structured documentation
+      - technical writing
+      - content creation
+      - report generation
+      - general purpose
+    combinable_with: [constraint, cot, iterative]
+
+  - id: rtf
+    name: "RTF"
+    acronym: "Role · Task · Format"
+    description: "Simple yet effective framework for quick prompt structuring with role assignment, task definition, and output formatting."
+    category: structuring
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Role
+        description: "The role for the AI to assume"
+        prompt_hint: "What role should the AI play?"
+      - name: Task
+        description: "The specific task to accomplish"
+        prompt_hint: "What task needs to be completed?"
+      - name: Format
+        description: "The desired output format"
+        prompt_hint: "What format should the response take?"
+    best_for:
+      - quick tasks
+      - simple requests
+      - straightforward content
+      - basic structuring
+    combinable_with: [constraint, iterative, cot]
+
+  - id: 5w1h
+    name: "5W1H"
+    acronym: "Who · What · When · Where · Why · How"
+    description: "Comprehensive question-based framework that ensures all critical aspects of a prompt are addressed through the classic journalism approach."
+    category: structuring
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Who
+        description: "The actors, stakeholders, or audience involved"
+        prompt_hint: "Who is involved or who is this for?"
+      - name: What
+        description: "The specific subject or deliverable"
+        prompt_hint: "What needs to be done or produced?"
+      - name: When
+        description: "Timeline, deadlines, or temporal context"
+        prompt_hint: "When should this happen or what is the time context?"
+      - name: Where
+        description: "Location, platform, or context of application"
+        prompt_hint: "Where will this be applied or published?"
+      - name: Why
+        description: "The purpose, goal, or motivation"
+        prompt_hint: "Why is this important? What is the goal?"
+      - name: How
+        description: "The method, approach, or process"
+        prompt_hint: "How should this be accomplished?"
+    best_for:
+      - investigative analysis
+      - comprehensive planning
+      - research queries
+      - journalism
+      - requirements gathering
+    combinable_with: [constraint, craft, cot]
+
+  - id: crispe
+    name: "CRISPE"
+    acronym: "Capacity · Role · Insight · Statement · Personality · Experiment"
+    description: "Advanced framework for creating deeply personalized and nuanced prompts with personality traits and experimental thinking."
+    category: structuring
+    complexity: advanced
+    enabled: true
+    fields:
+      - name: Capacity
+        description: "The expertise level and domain capacity"
+        prompt_hint: "What level of expertise and domain knowledge is needed?"
+      - name: Role
+        description: "The specific role or persona"
+        prompt_hint: "What specific role should be adopted?"
+      - name: Insight
+        description: "Key insights or data to consider"
+        prompt_hint: "What background insights or data should inform the response?"
+      - name: Statement
+        description: "The core task or question"
+        prompt_hint: "What is the main question or task?"
+      - name: Personality
+        description: "The communication style and tone"
+        prompt_hint: "What tone and communication style should be used?"
+      - name: Experiment
+        description: "Creative or experimental approaches to try"
+        prompt_hint: "What creative angles or experiments should be explored?"
+    best_for:
+      - creative writing
+      - brand communication
+      - marketing content
+      - personalized responses
+      - thought leadership
+    combinable_with: [constraint, persona_flip, iterative]
+
+  - id: coast
+    name: "COAST"
+    acronym: "Context · Objective · Actions · Scenario · Task"
+    description: "Scenario-driven framework that grounds prompts in realistic contexts with clear objectives and actionable tasks."
+    category: structuring
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Context
+        description: "The situational backdrop"
+        prompt_hint: "What is the current situation or context?"
+      - name: Objective
+        description: "The primary goal to achieve"
+        prompt_hint: "What is the main objective?"
+      - name: Actions
+        description: "Specific actions to take"
+        prompt_hint: "What specific actions should be performed?"
+      - name: Scenario
+        description: "The scenario or use case"
+        prompt_hint: "What scenario or use case does this apply to?"
+      - name: Task
+        description: "The concrete deliverable"
+        prompt_hint: "What is the concrete deliverable or task?"
+    best_for:
+      - scenario planning
+      - use case development
+      - operational procedures
+      - process design
+      - simulation
+    combinable_with: [constraint, cot, risen]
+
+  - id: risen
+    name: "RISEN"
+    acronym: "Role · Instructions · Steps · End-goal · Narrowing"
+    description: "Step-oriented framework with explicit end goals and progressive narrowing of scope for precise outputs."
+    category: structuring
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Role
+        description: "The role to assign"
+        prompt_hint: "What role should the AI assume?"
+      - name: Instructions
+        description: "High-level instructions"
+        prompt_hint: "What are the key instructions or guidelines?"
+      - name: Steps
+        description: "Specific steps to follow"
+        prompt_hint: "What step-by-step process should be followed?"
+      - name: End-goal
+        description: "The desired final outcome"
+        prompt_hint: "What is the ultimate end-goal?"
+      - name: Narrowing
+        description: "Constraints that narrow the scope"
+        prompt_hint: "What constraints narrow the scope or focus?"
+    best_for:
+      - step-by-step processes
+      - procedural content
+      - tutorials
+      - workflows
+      - implementation guides
+    combinable_with: [constraint, cot, iterative]
+
+  - id: trace
+    name: "TRACE"
+    acronym: "Task · Request · Action · Context · Example"
+    description: "Example-driven framework that uses concrete examples to guide AI understanding and output quality."
+    category: structuring
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Task
+        description: "The overall task"
+        prompt_hint: "What is the overall task to accomplish?"
+      - name: Request
+        description: "The specific request or ask"
+        prompt_hint: "What specifically are you requesting?"
+      - name: Action
+        description: "The action to perform"
+        prompt_hint: "What action should be taken?"
+      - name: Context
+        description: "Relevant context and background"
+        prompt_hint: "What context is relevant?"
+      - name: Example
+        description: "A concrete example of desired output"
+        prompt_hint: "Provide an example of the desired output."
+    best_for:
+      - few-shot prompting
+      - example-driven tasks
+      - pattern matching
+      - style replication
+      - consistent formatting
+    combinable_with: [constraint, craft, cot]
+
+  - id: care
+    name: "CARE"
+    acronym: "Context · Action · Result · Example"
+    description: "Results-oriented framework that focuses on desired outcomes and uses examples to anchor expectations."
+    category: structuring
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Context
+        description: "The background context"
+        prompt_hint: "What is the context?"
+      - name: Action
+        description: "The action to take"
+        prompt_hint: "What action should be performed?"
+      - name: Result
+        description: "The expected result"
+        prompt_hint: "What result do you expect?"
+      - name: Example
+        description: "An example of good output"
+        prompt_hint: "Provide an example of the desired output."
+    best_for:
+      - quick results
+      - simple tasks with examples
+      - output-driven requests
+      - template generation
+    combinable_with: [constraint, cot, iterative]
+
+  - id: crtfc
+    name: "CRTFC"
+    acronym: "Context · Role · Task · Format · Constraints"
+    description: "Constraint-aware structuring framework that explicitly defines boundaries and limitations alongside the core prompt structure."
+    category: structuring
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Context
+        description: "Background and situational context"
+        prompt_hint: "What is the context?"
+      - name: Role
+        description: "The role for the AI"
+        prompt_hint: "What role should the AI adopt?"
+      - name: Task
+        description: "The specific task"
+        prompt_hint: "What task should be performed?"
+      - name: Format
+        description: "Output format requirements"
+        prompt_hint: "What format should the output take?"
+      - name: Constraints
+        description: "Limitations and boundaries"
+        prompt_hint: "What constraints or limitations apply?"
+    best_for:
+      - constrained generation
+      - regulated content
+      - compliance documents
+      - structured outputs
+      - technical specifications
+    combinable_with: [cot, iterative, risen]
+
+  # ─── GOAL-ORIENTED FRAMEWORKS ─────────────────────────────
+
+  - id: rise
+    name: "RISE"
+    acronym: "Role · Input · Steps · Expectation"
+    description: "Input-focused framework that clearly defines what goes in and what should come out, with explicit expectations."
+    category: goal_oriented
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Role
+        description: "The role for the AI"
+        prompt_hint: "What role should the AI take?"
+      - name: Input
+        description: "The input data or information"
+        prompt_hint: "What input data or information is provided?"
+      - name: Steps
+        description: "Processing steps to follow"
+        prompt_hint: "What steps should be followed?"
+      - name: Expectation
+        description: "The expected output or result"
+        prompt_hint: "What output do you expect?"
+    best_for:
+      - data processing
+      - transformation tasks
+      - input-output mappings
+      - analytical tasks
+      - ETL processes
+    combinable_with: [constraint, cot, iterative]
+
+  - id: tag
+    name: "TAG"
+    acronym: "Task · Action · Goal"
+    description: "Minimalist goal-driven framework for clear, concise prompt construction with explicit goal alignment."
+    category: goal_oriented
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Task
+        description: "The task to accomplish"
+        prompt_hint: "What is the task?"
+      - name: Action
+        description: "The specific action to take"
+        prompt_hint: "What action should be performed?"
+      - name: Goal
+        description: "The desired goal or outcome"
+        prompt_hint: "What goal should be achieved?"
+    best_for:
+      - quick directives
+      - goal-driven tasks
+      - simple automation
+      - command-style prompts
+    combinable_with: [constraint, cot, craft]
+
+  - id: ape
+    name: "APE"
+    acronym: "Action · Purpose · Expectation"
+    description: "Purpose-driven framework that aligns actions with clear purpose and expectations for focused outputs."
+    category: goal_oriented
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Action
+        description: "The action to perform"
+        prompt_hint: "What action should be taken?"
+      - name: Purpose
+        description: "The purpose behind the action"
+        prompt_hint: "What is the purpose of this action?"
+      - name: Expectation
+        description: "The expected outcome"
+        prompt_hint: "What outcome do you expect?"
+    best_for:
+      - purpose-driven content
+      - mission-aligned tasks
+      - strategic communication
+      - focused generation
+    combinable_with: [constraint, cot, craft]
+
+  - id: broke
+    name: "BROKE"
+    acronym: "Background · Role · Objective · Key Results · Evolve"
+    description: "OKR-inspired framework for strategic and business-aligned prompt engineering with measurable outcomes."
+    category: goal_oriented
+    complexity: advanced
+    enabled: true
+    fields:
+      - name: Background
+        description: "Business or project background"
+        prompt_hint: "What is the background or business context?"
+      - name: Role
+        description: "The strategic role to assume"
+        prompt_hint: "What strategic role should be adopted?"
+      - name: Objective
+        description: "The primary objective"
+        prompt_hint: "What is the primary objective?"
+      - name: Key Results
+        description: "Measurable key results"
+        prompt_hint: "What key results should be achieved?"
+      - name: Evolve
+        description: "How to iterate and improve"
+        prompt_hint: "How should the approach evolve or improve over time?"
+    best_for:
+      - strategic planning
+      - business analysis
+      - OKR alignment
+      - executive communication
+      - product strategy
+    combinable_with: [cot, iterative, constraint]
+
+  # ─── PROBLEM-SOLVING FRAMEWORKS ───────────────────────────
+
+  - id: bab
+    name: "BAB"
+    acronym: "Before · After · Bridge"
+    description: "Transformation framework that maps current state to desired state and identifies the bridge between them."
+    category: problem_solving
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Before
+        description: "The current state or problem"
+        prompt_hint: "What is the current state or situation?"
+      - name: After
+        description: "The desired future state"
+        prompt_hint: "What is the desired outcome or future state?"
+      - name: Bridge
+        description: "The path from before to after"
+        prompt_hint: "What steps or strategy bridge the gap?"
+    best_for:
+      - change management
+      - transformation planning
+      - copywriting
+      - persuasive content
+      - improvement proposals
+    combinable_with: [cot, constraint, iterative]
+
+  - id: para
+    name: "PARA"
+    acronym: "Problem · Action · Result · Ask"
+    description: "Problem-first framework for crisis response, troubleshooting, and solution-oriented prompt engineering."
+    category: problem_solving
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Problem
+        description: "The problem to solve"
+        prompt_hint: "What is the problem?"
+      - name: Action
+        description: "The action to take"
+        prompt_hint: "What action should be taken?"
+      - name: Result
+        description: "The expected result"
+        prompt_hint: "What result should be achieved?"
+      - name: Ask
+        description: "The specific ask or request"
+        prompt_hint: "What is your specific ask?"
+    best_for:
+      - troubleshooting
+      - crisis response
+      - problem-solving
+      - incident reports
+      - support requests
+    combinable_with: [cot, constraint, 5w1h]
+
+  - id: parea
+    name: "PAREA"
+    acronym: "Problem · Audience · Response · Example · Adjustments"
+    description: "Audience-aware framework that tailors problem-solving to specific audiences with example-driven guidance."
+    category: problem_solving
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Problem
+        description: "The problem or challenge"
+        prompt_hint: "What problem needs to be addressed?"
+      - name: Audience
+        description: "The target audience"
+        prompt_hint: "Who is the target audience?"
+      - name: Response
+        description: "The type of response needed"
+        prompt_hint: "What type of response is appropriate?"
+      - name: Example
+        description: "An example of good output"
+        prompt_hint: "Provide an example of what good looks like."
+      - name: Adjustments
+        description: "Adjustments or fine-tuning needed"
+        prompt_hint: "What adjustments or customizations are needed?"
+    best_for:
+      - audience-focused writing
+      - marketing content
+      - user documentation
+      - customer communication
+      - educational content
+    combinable_with: [constraint, crispe, persona_flip]
+
+  # ─── REASONING FRAMEWORKS ─────────────────────────────────
+
+  - id: cot
+    name: "COT"
+    acronym: "Chain of Thought"
+    description: "Reasoning framework that encourages step-by-step logical thinking for complex problem-solving and analysis."
+    category: reasoning
+    complexity: moderate
+    enabled: true
+    fields:
+      - name: Problem Statement
+        description: "Clear statement of the problem"
+        prompt_hint: "State the problem clearly."
+      - name: Thinking Steps
+        description: "Step-by-step reasoning process"
+        prompt_hint: "Break down your thinking into clear steps."
+      - name: Intermediate Conclusions
+        description: "Conclusions drawn at each step"
+        prompt_hint: "What conclusions emerge at each reasoning step?"
+      - name: Final Answer
+        description: "The synthesized final answer"
+        prompt_hint: "What is the final, well-reasoned answer?"
+    best_for:
+      - complex reasoning
+      - mathematical problems
+      - logical analysis
+      - decision making
+      - debugging
+      - multi-step problems
+    combinable_with: [craft, broke, constraint, risen]
+
+  # ─── CONSTRAINT FRAMEWORKS ────────────────────────────────
+
+  - id: constraint
+    name: "CONSTRAINT"
+    acronym: "Scope · Quality · Length · Format"
+    description: "Meta-framework for adding explicit constraints and boundaries to any prompt for more controlled outputs."
+    category: constraint
+    complexity: simple
+    enabled: true
+    fields:
+      - name: Scope
+        description: "The boundaries of the task"
+        prompt_hint: "What is in scope and out of scope?"
+      - name: Quality
+        description: "Quality standards and criteria"
+        prompt_hint: "What quality standards must be met?"
+      - name: Length
+        description: "Output length requirements"
+        prompt_hint: "What are the length constraints?"
+      - name: Format
+        description: "Format specifications"
+        prompt_hint: "What format specifications apply?"
+    best_for:
+      - adding constraints
+      - quality control
+      - format enforcement
+      - scope management
+      - output control
+    combinable_with: [craft, rtf, crispe, risen, broke, cot]
+
+  # ─── PERSONA FRAMEWORKS ───────────────────────────────────
+
+  - id: persona_flip
+    name: "PERSONA FLIP"
+    acronym: "Persona · Challenge · Perspective · Debrief"
+    description: "Perspective-shifting framework that explores problems through different personas for richer, more nuanced outputs."
+    category: persona
+    complexity: advanced
+    enabled: true
+    fields:
+      - name: Persona
+        description: "The persona to adopt"
+        prompt_hint: "What persona should be adopted?"
+      - name: Challenge
+        description: "The challenge to address"
+        prompt_hint: "What challenge should be addressed?"
+      - name: Perspective
+        description: "The unique perspective to apply"
+        prompt_hint: "What unique perspective should be applied?"
+      - name: Debrief
+        description: "Summary and synthesis of insights"
+        prompt_hint: "Summarize insights gained from this perspective."
+    best_for:
+      - stakeholder analysis
+      - empathy mapping
+      - product design
+      - conflict resolution
+      - creative brainstorming
+      - user research
+    combinable_with: [crispe, cot, iterative]
+
+  # ─── ITERATIVE FRAMEWORKS ─────────────────────────────────
+
+  - id: iterative
+    name: "ITERATIVE"
+    acronym: "Round 1 · Round 2 · Round 3 · Round 4"
+    description: "Multi-round refinement framework that progressively improves outputs through structured iteration cycles."
+    category: iterative
+    complexity: advanced
+    enabled: true
+    fields:
+      - name: "Round 1"
+        description: "Initial draft or exploration"
+        prompt_hint: "Generate the initial version."
+      - name: "Round 2"
+        description: "Critique and identify improvements"
+        prompt_hint: "Critique the previous version and identify improvements."
+      - name: "Round 3"
+        description: "Refine based on critique"
+        prompt_hint: "Refine the output based on the critique."
+      - name: "Round 4"
+        description: "Final polish and optimization"
+        prompt_hint: "Polish and optimize the final version."
+    best_for:
+      - iterative refinement
+      - quality improvement
+      - content polishing
+      - complex deliverables
+      - perfectionist tasks
+    combinable_with: [craft, broke, crispe, cot]

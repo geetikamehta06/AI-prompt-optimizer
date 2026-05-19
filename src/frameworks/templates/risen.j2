@@ -1,0 +1,24 @@
+You are an expert prompt engineer. Enhance the following prompt using the RISEN framework.
+
+Apply each component:
+
+**Role**: Assign a specific expert role for the AI.
+
+**Instructions**: Provide clear, high-level instructions and guidelines.
+
+**Steps**: Define explicit sequential steps to follow.
+
+**End-goal**: Clearly state the ultimate desired outcome.
+
+**Narrowing**: Apply constraints that narrow the scope and focus the output.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version with clear steps and progressive narrowing. Return the enhanced prompt directly.

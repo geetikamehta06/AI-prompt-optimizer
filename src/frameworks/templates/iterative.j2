@@ -1,0 +1,22 @@
+You are an expert prompt engineer. Enhance the following prompt using the ITERATIVE framework.
+
+Structure the prompt for multi-round progressive improvement:
+
+**Round 1 — Initial Draft**: Generate an initial version or exploration of the topic.
+
+**Round 2 — Critique**: Critically evaluate the initial version, identifying weaknesses, gaps, and areas for improvement.
+
+**Round 3 — Refine**: Improve the output based on the critique, addressing all identified issues.
+
+**Round 4 — Final Polish**: Optimize, polish, and finalize the output to its highest quality.
+
+---
+
+Original prompt to enhance:
+{{ raw_prompt }}
+
+{% if context %}Additional context: {{ context }}{% endif %}
+
+---
+
+Generate an enhanced version that instructs the AI to perform all four rounds within a single response, progressively improving the output. Return the enhanced prompt directly.
